@@ -19,12 +19,6 @@
   },
   {
     "role": "user",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
     "resource": "Order",
     "action": "read:own",
     "attributes": "*"
