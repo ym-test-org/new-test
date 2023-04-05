@@ -15,7 +15,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
-import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
+import { ProjectListRelationFilter } from "../../project/base/ProjectListRelationFilter";
 
 @InputType()
 class UserWhereInput {
@@ -54,15 +54,15 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => OrderListRelationFilter,
+    type: () => ProjectListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => OrderListRelationFilter)
+  @Type(() => ProjectListRelationFilter)
   @IsOptional()
-  @Field(() => OrderListRelationFilter, {
+  @Field(() => ProjectListRelationFilter, {
     nullable: true,
   })
-  orders?: OrderListRelationFilter;
+  projects?: ProjectListRelationFilter;
 
   @ApiProperty({
     required: false,

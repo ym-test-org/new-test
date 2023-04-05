@@ -8,22 +8,24 @@ generator client {
 }
 
 model User {
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   firstName String?
-  id        String   @id @default(cuid())
+  id        String    @id @default(cuid())
   lastName  String?
-  orders    Order[]
   password  String
+  projects  Project[]
   roles     Json
-  updatedAt DateTime @updatedAt
-  username  String   @unique
+  updatedAt DateTime  @updatedAt
+  username  String    @unique
 }
 
-model Order {
-  createdAt     DateTime @default(now())
-  createdUser   User?    @relation(fields: [createdUserId], references: [id])
-  createdUserId String?
-  id            String   @id @default(cuid())
-  orderNumber   Float?
-  updatedAt     DateTime @updatedAt
+model Project {
+  createdAt   DateTime  @default(now())
+  description String?
+  id          String    @id @default(cuid())
+  name        String?
+  owner       User?     @relation(fields: [ownerId], references: [id])
+  ownerId     String?
+  startDate   DateTime?
+  updatedAt   DateTime  @updatedAt
 }

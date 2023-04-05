@@ -19,7 +19,7 @@ import {
   IsJSON,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Order } from "../../order/base/Order";
+import { Project } from "../../project/base/Project";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 
@@ -65,12 +65,12 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: () => [Order],
+    type: () => [Project],
   })
   @ValidateNested()
-  @Type(() => Order)
+  @Type(() => Project)
   @IsOptional()
-  orders?: Array<Order>;
+  projects?: Array<Project>;
 
   @ApiProperty({
     required: true,

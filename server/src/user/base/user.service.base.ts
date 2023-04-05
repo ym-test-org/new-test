@@ -10,7 +10,7 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-import { Prisma, User, Order } from "@prisma/client";
+import { Prisma, User, Project } from "@prisma/client";
 import { PasswordService } from "../../auth/password.service";
 import { transformStringFieldUpdateInput } from "../../prisma.util";
 
@@ -72,14 +72,14 @@ export class UserServiceBase {
     return this.prisma.user.delete(args);
   }
 
-  async findOrders(
+  async findProjects(
     parentId: string,
-    args: Prisma.OrderFindManyArgs
-  ): Promise<Order[]> {
+    args: Prisma.ProjectFindManyArgs
+  ): Promise<Project[]> {
     return this.prisma.user
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .orders(args);
+      .projects(args);
   }
 }
